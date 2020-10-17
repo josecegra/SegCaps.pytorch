@@ -14,7 +14,7 @@ def init(args):
     torch.manual_seed(args.seed)#没看懂是在干什么,应该是随机生成数
     if args.cuda:
         torch.cuda.manual_seed(args.seed)
-    train_loader = get_data(args.batch_size_train,data_name=args.data_name,data_root='../data_test')
+    train_loader = get_data(args.batch_size_train,data_name=args.data_name,data_root=args.data_root)
     #if args.model=='xception':
     if 'xception' in args.model :
         model=Xception()
