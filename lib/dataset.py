@@ -1,5 +1,6 @@
 import torch.utils.data as data
 import os
+from PIL import Image
 from skimage import io
 import numpy as np
 import visdom
@@ -13,7 +14,8 @@ class Dataset(data.Dataset):
         for file in files:
             if data_name in file:
                 file_path = os.path.join(path, file)
-                img = io.imread(file_path)
+                #img = io.imread(file_path)
+                img = Image.open(file_path)
                 imgs.append(img)    
         imgs = np.array(imgs)
         self.labels = self.init_label(imgs)
