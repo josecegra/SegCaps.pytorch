@@ -3,7 +3,7 @@ import os
 from PIL import Image
 from skimage import io
 import numpy as np
-import visdom
+#import visdom
 
 
 class Dataset(data.Dataset):
@@ -55,25 +55,25 @@ class Dataset(data.Dataset):
         return len(self.data)
 
 
-def test(path):
-    a = Dataset(path)
-    b, c = a[0]
-    vis = visdom.Visdom()
-    vis.close(env='test')
-    vis.image(
-        c.reshape(1, 200, 200).astype(np.float32) / 5,
-        env='test',
-        win='get'
-    )
-    for i in range(768):
-        vis.image(
-            b[i],
-            env='test',
-            win='tes',
-            opts=dict(title='predict')
-        )
-    print(b.shape)
-    print(c.shape)
-    print(len(a))
+# def test(path):
+#     a = Dataset(path)
+#     b, c = a[0]
+#     #vis = visdom.Visdom()
+#     vis.close(env='test')
+#     vis.image(
+#         c.reshape(1, 200, 200).astype(np.float32) / 5,
+#         env='test',
+#         win='get'
+#     )
+#     for i in range(768):
+#         vis.image(
+#             b[i],
+#             env='test',
+#             win='tes',
+#             opts=dict(title='predict')
+#         )
+#     print(b.shape)
+#     print(c.shape)
+#     print(len(a))
 
 # test('./my_ai/')
